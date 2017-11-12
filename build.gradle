@@ -1,0 +1,23 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+	mavenCentral()
+		flatDir {
+       dirs 'dependencies'
+	}
+}
+
+dependencies {
+  compile name: 'djep-1.0.0'
+  compile name: 'jep-2.3.0'
+  testCompile 'junit:junit:4.12'
+}
+
+sourceSets {
+	main {
+		java {
+			srcDir 'src'
+		}
+	}
+}

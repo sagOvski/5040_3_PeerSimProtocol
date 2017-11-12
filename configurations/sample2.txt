@@ -1,0 +1,12 @@
+# PEERSIM EXAMPLE 1
+
+random.seed 1234567890
+simulation.cycles 30
+control.shf Shuffle
+
+network.size 50000
+
+protocol.lnk BasicShuffle
+protocol.lnk.cacheSize 30
+protocol.lnk.shuffleLength 8
+protocol.lnk.transport E2ETransport
