@@ -38,33 +38,23 @@ init.wire WireStar
 
 # This initializes the topology as a ring. Use should also use WireStar to
 # initialize it as a star.
-init.wire WireRingLattice
-{
-	protocol gossip
-	k 1
-}
+#init.wire WireRingLattice
+#{
+#	protocol gossip
+#	k 1
+#}
 
 init.sch CDScheduler
 {
 	protocol gossip
 }
 
-control.degree example.reports.InDegreeObserver
-{
-	protocol gossip
-
-	step CYCLE
-	starttime 299000
-	endtime 300000
-}
-
-control.graphPL GraphStats
+control.clusteringCoefficient org.sagovski.inf5040.peersim.reports.ClusteringCoefficientReportWriter
 {
 	protocol gossip
 	step CYCLE
 	undir true
-	# nl will produce path length information
-	nl 10
-	# uncomment the next line to produce clustering information
-	#nc 1000
+	nc 1000
+	type Shuffle
+	cacheSize 30
 }

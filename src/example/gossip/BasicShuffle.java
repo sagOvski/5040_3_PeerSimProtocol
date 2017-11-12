@@ -119,7 +119,7 @@ public class BasicShuffle implements Linkable, EDProtocol, CDProtocol {
 		// Creating a tempCache to make sure qNode is not included in the subset
 		List<Entry> tempCache = new ArrayList<Entry>(cache);
 		tempCache.remove(qNode);
-		for (int iteration = 0; (iteration < l) || (false == tempCache.isEmpty()); ++iteration) {
+		for (int iteration = 0; (iteration < l) && (false == tempCache.isEmpty()); ++iteration) {
 			final Entry randomEntry = tempCache.remove(CommonState.r.nextInt(tempCache.size()));
 			randomSubset.add(randomEntry);
 		}
