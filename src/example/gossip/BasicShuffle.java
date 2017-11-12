@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import peersim.cdsim.CDProtocol;
 import peersim.config.Configuration;
 import peersim.core.CommonState;
@@ -36,6 +39,8 @@ import peersim.transport.Transport;
  *
  */
 public class BasicShuffle implements Linkable, EDProtocol, CDProtocol {
+
+	private static Logger logger = LogManager.getLogger(BasicShuffle.class);
 
 	private static final String PAR_CACHE = "cacheSize";
 	private static final String PAR_L = "shuffleLength";
@@ -69,6 +74,7 @@ public class BasicShuffle implements Linkable, EDProtocol, CDProtocol {
 		this.tid = Configuration.getPid(n + "." + PAR_TRANSPORT);
 
 		cache = new ArrayList<Entry>(size);
+		logger.info("Initialized cache of size: " + cache.size() + " " + this.size);
 	}
 
 	/*

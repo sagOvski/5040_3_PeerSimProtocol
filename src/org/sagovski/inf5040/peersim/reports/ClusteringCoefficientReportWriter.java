@@ -16,21 +16,14 @@ public class ClusteringCoefficientReportWriter extends GraphObserver implements 
 
 	private final String OUTPUT_REPORT_PATH = PathUtils.getAbsolutePath("clusteringCoefficientReport");
 
-	// private static final String PAR_CACHESIZE = "cacheSize";
 	private static final String PAR_STEP = "step";
-	// private static final String PAR_TYPE = "type";
 	private static final String PAR_NC = "nc";
 
-	// private final int cacheSize;
 	private final int step;
-	// private final String type;
 	private final int nc;
 
 	public ClusteringCoefficientReportWriter(String name) {
 		super(name);
-		// String prefix = name + ".";
-		// cacheSize = Configuration.getInt(prefix + PAR_CACHESIZE);
-		// type = Configuration.getString(prefix + PAR_TYPE);
 		step = Configuration.getInt(name + "." + PAR_STEP, 0);
 		nc = Configuration.getInt(name + "." + PAR_NC, 0);
 		try {

@@ -1,6 +1,10 @@
 # This script build and overlay using one of the bootstrap topologies and run 
 # the basic shuffle protocol on top of it.
 
+CACHE_SIZE 50
+NL 10 
+NC 1000
+
 SIZE 10000
 
 CYCLE 1000
@@ -23,7 +27,7 @@ protocol.tr UniformRandomTransport
 protocol.gossip example.gossip.BasicShuffle
 {
 	# the cache size should be set to 30 and to 50.
-	cacheSize 30
+	cacheSize CACHE_SIZE
 	shuffleLength 8
 
 	step CYCLE
@@ -54,7 +58,27 @@ control.clusteringCoefficient org.sagovski.inf5040.peersim.reports.ClusteringCoe
 	protocol gossip
 	step CYCLE
 	undir true
-	nc 1000
+	nc NC
 	type Shuffle
-	cacheSize 30
+	cacheSize CACHE_SIZE
 }
+
+control.averagePathLength org.sagovski.inf5040.peersim.reports.AveragePathLengthReportWriter
+{
+	protocol gossip
+	step CYCLE
+	undir true
+	nl NL
+	type Shuffle
+	cacheSize CACHE_SIZE
+
+}
+
+control.inDegree org.sagovski.inf5040.peersim.reports.InDegreeDistributionReportWriter
+{
+	protocol gossip
+	step CYCLE
+	type Shuffle
+	cacheSize CACHE_SIZE
+}
+
